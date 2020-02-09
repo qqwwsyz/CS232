@@ -64,10 +64,13 @@ void typemixer() {
 	// The variables were already assigned values.  Let's check them out.
 	// ---------------------------------------------------------------------
 	printf ("i = %d \tj=%d \t\t k=%d\n", i, j, k);	
+
 	// i = 1 	j=10 		 k=20	
-	printf ("a = %c \tB=%c \t\t dollarSign=%c\n", a, B, dollarSign);	
+	printf ("a = %c \tB=%c \t\t dollarSign=%c\n", a, B, dollarSign);
+	
 	// a = a 		B=B 		 dollarSign=$	
         printf ("x = %f \ty=%f \t\t z=%e\n", x, y, z);	
+
 	//x = 2.2 	y=0.82352941 		z=1.116e-5		
 	// ---------------------------------------------------------------------		
 	// And now the fun stuff ....

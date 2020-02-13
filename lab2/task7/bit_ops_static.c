@@ -8,13 +8,12 @@ void get_bits(unsigned x,
                  unsigned start,
                  unsigned end,
 		 unsigned * a) {
-    
-   return;
-    // YOUR CODE HERE
-    // Returning NULL is a placeholder
-    // get_bits receives an array a from caller and set a[i] = 1 when (i+start)-th bit
-    // of x is 1, otherwise set a[i] = 0;
+    for(int i = 0; i < end - start ; i++){
+a[i]=(x & (1 << (start+ i))) >> (start+1);
 }
+
+   }
+   
 
 // Set the bits of x within range of [start, end], in which both are inclusive
 // Assume 0 <= start & end <= 31
@@ -26,6 +25,8 @@ void set_bits(unsigned * x,
     // No return value
     // v points to an array of at least (end-start+1) unsigned integers.
     // if v[i] == 0, then set (i+start)-th bit of x zero, otherwise, set (i+start)-th bit of x one.
+*x = (*x & ~(1 << start&&end)) | ((*v << start&&end));
+
 }
 
 // Flip the bits of x within range [start, end], in which both are inclusive.
@@ -34,6 +35,8 @@ void flip_bits(unsigned * x,
               unsigned start,
               unsigned end) {
     // YOUR CODE HERE
+*x = (*x ^ (1 << start&&end));
+
 }
 
 

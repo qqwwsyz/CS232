@@ -3,6 +3,12 @@
 
 void rotate_4(int *p_a, int*p_b, int*p_c, int* p_d) {
     //TO-DO: please implement left rotate 4 integers by one position
+	int temp;
+	temp = *p_a;
+	*p_a = *p_b;
+	*p_b = *p_c;
+	*p_c = *p_d;
+	*p_d = temp;
 }
 
 int main(int argc, char ** argv) {
@@ -13,6 +19,10 @@ int main(int argc, char ** argv) {
     int b = atoi(argv[2]);
     int c = atoi(argv[3]);
     int d = atoi(argv[4]);
+	
+	if(argc != 5){
+		printf("Error: eotate needs four numbers");
+	}
     rotate_4(&a, &b, &c, &d);
     printf("%d %d %d %d\n", a, b, c, d);
     return 0;

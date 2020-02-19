@@ -10,6 +10,17 @@ int main () {
   char buf[MAX_BUF];
 
   do {
+    fgets(buf, MAX_BUF, stdin);
+    len = strlen(buf);
+
+        for(int i=0; i<len; i++){
+           if (buf[i]>= 'A' && buf[i]<= 'Z'){
+             letter_frequency[buf[i] -'A']++;
+           }else if (buf[i]>= 'a' && buf[i]<= 'z'){
+             letter_frequency[buf[i] -'a']++;
+}
+}
+
   } while (len > 1);
 
   printf("Distribution of letters in corpus:\n");

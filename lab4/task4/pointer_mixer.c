@@ -74,6 +74,7 @@ void strlen_vs_sizeof() {
     char * s = str;
 
     printf("strlen(str):%d sizeof(str):%d sizeof(str2):%d sizeof(s):%d, sizeof(*s):%d\n",
+	//strlen(str):6 sizeof(str):7 sizeof(str2):8 sizeof(s):8 sizeof(*s):8
          (int) strlen(str),  //the length of the str
          (int) sizeof(str),  //the memory size of the str
          (int) sizeof(str2),  //the memory size of the str2
@@ -98,10 +99,13 @@ void pointer_math() {
     char str[] = "Hello!";
     //pointer arithmetic consideration of typing
     printf("a[3]:%d str[3]:%c\n", *(a+3),*(str+3));
+	//a[3]:3 str[3]:l
     // I know you would not know what the actual addresses are, just comment
     // what you think (a+3-a) and (str+3-str) are.
     printf("a=%p a+3=%p (a+3-a)=%ld\n",a,a+3, ((long) (a+3)) - (long) a);
+	//a=the address of a[0] a+3=the address of a[3] move by 3 bytes a+3-a=3 bytes of int
     printf("str=%p str+3=%p (str+3-str)=%ld\n",str,str+3, ((long) (str+3)) - (long) str);
+	//str=the address of str[0] str+3=the address of str[3] str+3-str=3 bytes of char
 }
 // ----------------------------------------------------------------------------
 
@@ -116,6 +120,7 @@ void pointer_casting() {
 
     int * i = (int *) s;  //cast s to an integer pointer
     printf("*i = %d\n", *i); 
+	//*i = 255
     //use characters as a generic container for data and then used pointer casting 
     //to determine how to interpret that data. char array is an arbitrary container
     //that stores a bunch of bytes.
@@ -130,6 +135,7 @@ void byte_ordering() {
   printf("0x");
   for(i=0;i<4;i++){
     printf("%02x",p[i]);
+	//0xdeadbeef
   }
   printf("\n");
 }
@@ -173,7 +179,9 @@ darray ---> | --+-'        '---'---'---'---'
     // adarray equals to &darray[0] which equals to &(&array[0])
     // a double array is a double pointer
     printf("*(*(darray+2)+2) = %d\n", *(*(darray+2)+2));
+	//*(*(darray+2)+2) = 11
     printf("     daray[2][2] = %d\n", darray[2][2]);
+	//	daray[2][2] = 11
 }
 // ----------------------------------------------------------------------------
 void string_double_array_pointer_array() {
@@ -185,6 +193,10 @@ void string_double_array_pointer_array() {
     printf("str2:%p\n",str2); //which is at the higer address? why?
                               //check the memory layout of your process 
                               //what lays at the bottom?
+	//str1:address of str1
+	//str2:address of str2
+	//str1 is higher because an array it's tatically allocaed array str1[0] is at the bottom
+
     //this is an array of strings, each string is a char *	
     char * strings[]={"Go Pace!",
                      "Beat CUNY!",
@@ -193,9 +205,16 @@ void string_double_array_pointer_array() {
     int i;
 
     printf("strings: %p\n",strings); //higher address or lower address? why?
+	//strings: address of strings. It's higher address, because strings is allocated in a stack
     for(i=0;i<4;i++){
       printf("strings[%d]: '%s' %p\n",i,strings[i],strings[i]);
       //are they in higher address or lower address? why?
+
+	//they are in lower address, because each element are follow by pointer strings
+	//strings[0]: 'Go Pace!', address of strings[0]
+	//strings[1]: 'Beat CUNY!', address of strings[1]
+	//string[2]: 'Crash SUNY!', address of strings[2]
+	//string[3]: 'Enjoy CS232!', address of strings[3]
   }
 }
 // ----------------------------------------------------------------------------
@@ -211,10 +230,13 @@ void string_equal() {
         printf("Beat CUNY!\n");
     }else {
         printf("Crash SUNY!\n");
+	//Crash SUNY!
     }
     printf("\n");
     printf("s1: %p == s2: %p? \n", s1, s2);
+	//s1: address of s1 == s2: address of s2
     printf("s3: %p == s4: %p? \n", s3, s4);
+	//s3: address of s3 == s4: address of s4
 }
 //Now do you understand why we need string lib, like strcmp?
 // ----------------------------------------------------------------------------
@@ -226,17 +248,19 @@ void trace_pointers() {
     int *t = &a;
     int *u = NULL;
     printf("%d %d\n", a, *t);
-
+	//42 42
     c = b;
     u = t;
     printf("%d %d\n", c, *u);
-
+	//7 42
     a = 8;
     b = 8;
     printf("%d %d %d %d\n", b, c, *t, *u);
+	//8 7 8 8
 
     *t = 123;
     printf("%d %d %d %d %d\n", a, b, c, *t, *u);
+	//8 8 7 123 123
 }
 
 // ----------------------------------------------------------------------------
@@ -266,12 +290,13 @@ void trace_structs_pointers()
     my_stuff.a = &temp;
     my_stuff.b = 1;
     printf("a=%d b=%d\n", *(my_stuff.a), my_stuff.b);
-
+	//a=0 b=1
     foo(my_stuff);
     printf("a=%d b=%d\n", *(my_stuff.a), my_stuff.b);
-
+	//a=2 b=1
     bar(&my_stuff);
     printf("a=%d b=%d\n", *(my_stuff.a), my_stuff.b);
+	//a=4 b=5
 }
 
 // ----------------------------------------------------------------------------
@@ -281,7 +306,9 @@ void readonly_vs_stack() {
 
   str1[0] = 't';
   printf("str1: %s \n",str1);
+	//str1: this is a locust tree
   str2[0] = 't';
   printf("str2: %s \n",str2);
+	//str2: this is also a locust tree
 }
 

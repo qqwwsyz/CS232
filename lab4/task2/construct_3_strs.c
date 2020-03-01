@@ -6,7 +6,24 @@ typedef struct node {
 } node_t;
 
 node_t * construct_3_strs() {
-    return NULL;//just to pass compiler, please edit as needed.
+
+	struct node * x = NULL;
+	struct node * y = NULL;
+	struct node * z = NULL;
+
+	x = (struct node *)malloc(sizeof(node_t));
+	y = (struct node *)malloc(sizeof(node_t));
+	z = (struct node *)malloc(sizeof(node_t));
+     
+        x->value = "CS232";
+	x->next = y;
+	y->value = "is";
+	y->next = z;
+	z->value = "awesome";
+        z->next = x;
+
+    	return x;//just to pass compiler, please edit as needed.
+
 }
 
 //You can ignore the following code for testing
@@ -25,8 +42,14 @@ int dump_all(node_t * x) {
     printf(" %s\n", z->value);
     if(z->next != x) {
     	printf("failed");
+	free(x);
+	free(y);
+	free(z);
 	return -1;
     } else {
+	free(x);
+	free(y);
+	free(z);
         return 0;
     }
 }

@@ -16,6 +16,25 @@ node_t * construct_3() {
     //Dereference each pointer to access the .next field in its pointee, 
     //and use pointer assignment to set the .next field to point to the appropriate Node. 
 
+// Allocate the pointers
+	struct node* x;
+	struct node* y;
+	struct node* z;
+
+	// Allocate the pointees
+	x = malloc(sizeof(node_t));
+	y = malloc(sizeof(node_t));
+	z = malloc(sizeof(node_t));
+
+	// Put the numbers in the pointees
+	x->value = 1;
+	y->value = 2;
+	z->value = 3;
+
+	// Put the pointers in the pointees
+	x->next = y;
+	y->next = z;
+	z->next = x;
 }
 
 //You can ignore the following code for testing

@@ -1,7 +1,7 @@
 UNAME_S := $(shell uname -s)
 CC=gcc
 LD=gcc
-CFLAGS=-ggdb -Wall -std=c11
+CFLAGS=-ggdb -Wall -std=c99
 LDFLAGS=
 
 ifeq ($(UNAME_S), Darwin)
@@ -33,4 +33,3 @@ clean:
         
 mystring.c: mystring.h
 mystring-test.c: mystring.h
-

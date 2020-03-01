@@ -1,0 +1,29 @@
+In my opinion, the stack frame size of this function is
+
+when start = 4,
+stack = 5
+frame = 1000000
+
+
+
+ 
+frame max= 1000000
+stack max= 499998500000
+
+(sum = 499999500000, recursion = 1000000)
+
+|--------------------------------------------|
+|  Main (...)                                |
+|--------------------------------------------|
+|printSumRangeRecursive(0,1000000)           |
+|--------------------------------------------|
+|printSumRangeRecursive(1,1000000)           |
+|--------------------------------------------|
+|printSumRangeRecursive(2,1000000)           |
+|--------------------------------------------|
+|printSumRangeRecursive(3,1000000)           |
+|--------------------------------------------|
+|printSumRangeRecursive(4,1000000)           |
+|--------------------------------------------|
+|printSumRangeRecursive(499998500000,1000000)|
+

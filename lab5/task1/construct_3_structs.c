@@ -13,13 +13,41 @@ node_t * setup() {
     //Dereference each pointer to access the .next field in its pointee, 
     //and use pointer assignment to set the .next field to point to the appropriate Node. 
     
+    struct snode *node1 = NULL;
+    struct snode *node2 = NULL;
+    struct snode *node3 = NULL;
+    head = NULL;
+    node1 = (struct snode *)malloc(sizeof(node_t));
+    node2 = (struct snode *)malloc(sizeof(node_t));
+    node3 = (struct snode *)malloc(sizeof(node_t));
+
+    head = node1;
+
+    strcpy(node1->str, "hello");
+    node1->length = 5;
+    node1->next = node2;
+    strcpy(node2->str, "there");
+    node2->length = 5;
+    node2->next = node3;
+    strcpy(node3->str, "prof");
+    node3->length = 4;
+    node3->next = NULL;
+
    return head;
 }
 
-void teardown(/*what parameter?*/) {
+void teardown(node_t **head) {
     //TODO: free all dynamic memory you requested.
     //Please complete the prototype of teardown.
     //You are not allowed to use globals
+	struct snode *temp = *head;
+	struct snode *tempNext = NULL;
+	while(temp != NULL){
+	tempNext = temp->next;
+	free(temp);
+	temp = tempNext;
+	}
+	*head = NULL;
 }
 
 //You can ignore the following code for testing
@@ -27,7 +55,7 @@ void dump_all(node_t*);
 int main (int argc, char ** argv) {
     node_t * head = setup();
     dump_all(head);
-    teardown(/*what argument?*/);
+    teardown(&head);
     return 0;
 }
 

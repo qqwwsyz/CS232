@@ -11,6 +11,8 @@
  */
 struct slist *slist_create(){
 	struct slist * my_list = (struct slist*)malloc(sizeof(struct slist));
+	my_list->front = NULL;
+	my_list->back = NULL;
 	return my_list;
 }
 
@@ -43,8 +45,13 @@ struct snode* slist_add_back(struct slist *l, char *str){
  */
 struct snode* slist_add_front(struct slist *l, char *str){
 	struct snode * p = snode_create(str);
+	if(l->front == NULL && l->back == NULL){
+	l->front = p;
+	l->back = p;	
+	}else{
 	p->next = l->front;
 	l->front = p;
+	}
 	return p;
 }
 
@@ -72,11 +79,13 @@ struct snode* slist_find(struct slist *l, char *str){
  */
 void slist_destroy(struct slist *l){
 	struct snode * temp = l->front;
-	while(temp->next != NULL){
-	temp = l->front;
+	while(temp->next != NULL){	
 	l->front = l->front->next;
 	snode_destroy(temp);
+	temp = l->front;
 	}
+	snode_destroy(l->back);
+	l = NULL;
 	
 }
 
@@ -119,6 +128,9 @@ uint32_t slist_length(struct slist *l){
 struct snode* slist_delete(struct slist *l, char *str){
 	struct snode *temp = l->front;
 	struct snode *previous = NULL;
+	if(temp!= NULL && strcmp(temp->str, str) == 0){
+	l->front = temp->next;
+	}
 	while(temp != NULL && strcmp(temp->str, str) != 0){
 		previous = temp;
 		temp = temp->next;
@@ -126,7 +138,7 @@ struct snode* slist_delete(struct slist *l, char *str){
 	if(temp == NULL)
 	return NULL;
 	previous->next = temp->next;
-	//free(temp);
+	snode_destroy(temp);
 	return temp;
 }
 

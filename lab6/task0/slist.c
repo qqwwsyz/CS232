@@ -78,6 +78,10 @@ struct snode* slist_find(struct slist *l, char *str){
  * @param l pointer tot he list
  */
 void slist_destroy(struct slist *l){
+	if(l->front == NULL){
+	l = NULL;
+	return;
+	}
 	struct snode * temp = l->front;
 	while(temp->next != NULL){	
 	l->front = l->front->next;
@@ -126,8 +130,16 @@ uint32_t slist_length(struct slist *l){
 struct snode* slist_delete(struct slist *l, char *str){
 	struct snode *temp = l->front;
 	struct snode *previous = NULL;
-	if(temp!= NULL && strcmp(temp->str, str) == 0){
+	if(temp->next == NULL && strcmp(temp->str, str) == 0){
+	snode_destroy(temp);
+	l->front = NULL;
+	l->back = NULL;
+	return NULL;
+	}
+	else if(temp!= NULL && strcmp(temp->str, str) == 0){
 	l->front = temp->next;
+	snode_destroy(temp);	
+	return NULL;
 	}
 	while(temp != NULL && strcmp(temp->str, str) != 0){
 		previous = temp;

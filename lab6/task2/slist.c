@@ -169,19 +169,14 @@ return l->back;
 }
 struct snode *slist_find_at(struct slist *list, int index){
 struct snode *temp = list->front;
-int count = 0;
-if(index >= 0){
-while(temp!= NULL && index != count){
-temp = temp->next;
-count++;
-}
-}
-else{
-while(temp!= NULL && index != count - list->size){
-temp = temp->next;
-count++;
-}
-}
-return temp;
+	int count = 0;
+	if(index < 0)
+	count = 0 - list->size;
+
+	while(temp!= NULL && index != count){
+		temp = temp->next;
+		count++;
+		}
+	return temp;
 }
 

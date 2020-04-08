@@ -34,11 +34,18 @@ int msb(int x) {
 	w=32; // Number of bits that might contain most significant 1
 	ep=0; // Rightmost bit that might contain most significant 1
 	while(w>1) { //Narrow down to a single bit
-		//TODO: Look at half the range of bits
-		//TODO: create a mask. 
+		int hw = w/2;//TODO: Look at half the range of bits
+		int mask =((1<<hw)-1)<<(ep+hw);
+                //TODO: create a mask. 
 		// This mask is all one-bits in the left half of the range
 		printf("M= "); print_binary(mask); printf(" hw=%d ep=%d\n",hw,ep);
-		//TODO: use mask to figure out if the left half of the range has at least one bit   
+		if((x&mask)!=0){
+                 ep=ep+hw;
+                  w=hw;
+                }
+else{
+w=hw;}  
+                   //TODO: use mask to figure out if the left half of the range has at least one bit   
 		//If the left half of the range has a one bit, focus on only the left half
 		//else focus on only the right half
 		//TODO: You have ruled out either the left half of the range or the right half of the range

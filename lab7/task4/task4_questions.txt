@@ -3,7 +3,7 @@
 cmpl $6, -4(&ebp)
 
 2.What happens if we delete the “jmp” instruction?
-If we delete jmp, the loop will move to L4 no matter 
+If we delete jmp, the loop will move to L4 directly.
 3.Can you rewrite the condition with “jg” in place of “jle”? Why or why not?
 No.
 jg means jump if greater.

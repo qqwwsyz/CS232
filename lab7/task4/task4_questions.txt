@@ -1,4 +1,12 @@
 1.What instructions evaluate “a>6”?
-2.What happens if we delete the “jmp” instruction?
-3.Can you rewrite the condition with “jg” in place of “jle”? Why or why not?
 
+cmpl $6, -4(&ebp)
+
+2.What happens if we delete the “jmp” instruction?
+If we delete jmp, the loop will move to L4 no matter 
+3.Can you rewrite the condition with “jg” in place of “jle”? Why or why not?
+No.
+jg means jump if greater.
+jle means jump if less or equal.
+
+They have different meanings. 

@@ -10,3 +10,4 @@ jg means jump if greater.
 jle means jump if less or equal.
 
 They have different meanings. 
+JYM: it is possible to swap jg with jle as long as you also swap both code blocks with jump targets.

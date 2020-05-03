@@ -1,1 +1,6 @@
 #1 When the end of the trace file is reached a summary of your cache simulator should be printed out. Please leave the summary of your cache simulator here.
+
+The cache design: the two offset bits-0, 1. The two index bits-2, 3.
+ 28 tag bits-[4,31]
+
+Firstly I search for that particular tag value. And check if tag is in the nth way of the ind set or not. And chech if tag was not found, it is a miss. Then update the tag value. Print the array & the mru array.

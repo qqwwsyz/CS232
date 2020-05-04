@@ -1,23 +1,24 @@
+*  Example: C program to find area of a circle */
+
 #include <stdio.h>
 #define PI 3.14159
 
-
 int main()
 {
-  float r, a, b, c;
+  float r, a, c;
 
   printf("Enter radius (in mm):\n");
   scanf("%f", &r);
-if (r!=0){
-  b = r *0.0393700;
-  a = PI * b * b  ;
 
-  printf("Circle's area is %3.2f (sq in).\n", a);
-  c = 2 * PI * b;
-  printf("Its circumference is %3.2f (in).\n", c);
-}
-  else{
-  printf("Exit\n");
-}
+  while (r != 0) {
+    r = r / 25.4;
+    a = r * r *PI;
+    c = r * 2 * PI;
 
+    printf("Circle's area is %3.2f (sq in).\n", a);
+    printf("Its circumference is %.2f (in)\n", c);
+
+    printf("Enter radius (in mm):\n");
+    scanf("%f", &r);
+  }
 }

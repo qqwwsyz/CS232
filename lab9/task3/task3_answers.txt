@@ -1,3 +1,5 @@
 #1: Explain the newly-added function mruUpdate(), briefly outlining its purpose, how it works, and why we would want or need such a function in our fully-associative cache simulator.
 
+The function mruUpdate() is to bring the recently used index to the front, and shift everything behind by one place. In this function, firstly we plan to find how recent way the element was, and then in the while loop, we update the list, at the end we update the most recently used element in 'mru[0] = way'.
+
 #2: Compile and execute the fully-associative cache simulator in the task. Report the final number of hits and accesses output by the code. Based on the pattern of cache hits, estimate the hit rate of the given trace in the steady state (once the compulsory misses are accounted for).

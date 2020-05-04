@@ -21,7 +21,7 @@ Table for yi.trace when set index bits =4, block offset bit = 4 using direct map
 	 4 bits so set id = 0b0001. Cache miss
 	 because 10 already takes the only line
 	 and also cause eviction.
- M 12,1	|0x12 = 0b 0010 0001 0010. Offset takes|	miss eviction hit	 
+ M 12,1	|0x12 = 0b 0000 0001 0010. Offset takes|	miss eviction hit	 
 	 4 bits so set id = 0b0001. 
 -----------------------------------------------------------------
 
@@ -46,7 +46,7 @@ Table for yi.trace when set index bits =4, block offset bit = 4 using 2 lines pe
 	 4 bits so set id = 0b0001. Cache miss
 	 and eviction because two lines are all
 	 occupied.
- M 12,1	|0x12 = 0b 0010 0001 0010. Offset takes	|	 miss eviction hit	
+ M 12,1	|0x12 = 0b 0000 0001 0010. Offset takes	|	 miss eviction hit	
 	 4 bits so set id = 0b0001. Cache miss 
 	 and eviction because two lines are all
 	 occupied.

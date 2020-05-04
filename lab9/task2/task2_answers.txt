@@ -1,5 +1,6 @@
 #1: What function does the line i = (addr >> 2) & 7; serve in the simulation?
 i = (addr >> 2) & 7 is to right shift addr by 2 bits and bitwise end with 7 = 0111. 
+And this line served for while (fscanf(fp, "%x", &addr) > 0) { } function.
 
 #2: Compile and execute the direct-mapped cache simulator given in the task. Report the final number of hits and accesses output by the code. Also, based on the pattern of cache hits, estimate the hit rate of the given trace in the steady state (once the compulsory misses are accounted for).
 

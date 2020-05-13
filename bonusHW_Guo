@@ -1,0 +1,41 @@
+Practice Test 
+Guo Tang
+Q1: >
+Q2: >
+Q3: GCH
+Q4: i=0
+Q5: R 0x4C00, R 0x5900
+Q6: 6 3 7
+Q7: Register, cache, memory, disk
+Q8: Both of the above
+Q9: Using a combination of Nand gates
+Q10: direct addressing
+Q11: there are three accesses to memory
+Q12: add 1 ti X, and invert every bit
+Q13: 0 gates
+Q14: 63+65
+Q16: It's retruing address of local variable
+     strlen(s2) + strlen(s2) coubld be larger than MAXSIZE
+Q17: offset 4 bits, set id 6 bits. causes 11 misses, 2 5 8 11 in 0x20000
+Q18: char t = (char)x >= (short)z
+Q19: 1) subl $4, %esp
+	movel %edx, (%esp)
+     2) movel %ebp, %esp
+	popl %ebp
+     3) if(intvar == count){
+		count = 0;
+	}else {count++;}
+Q20: %ebp of main's caller
+	0x80483d4
+	0x80483cd
+	0x80483c6
+	0x80483de
+	0x80483e5
+	0x80483ec
+	0x80483f4
+      maub's ebp
+	0x80483a8
+	0x80483a1
+	0X804839a
+	%esp
+Q21: N
